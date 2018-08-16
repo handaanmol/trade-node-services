@@ -1,0 +1,242 @@
+#
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+version: '2'
+
+services:
+
+  ca.im1.blockchaindev12.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-im1
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.im1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1e6802bcd24e5676298961f05049199871f8a6f7364ee298ce0352c9edb326c4_sk
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.im1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/1e6802bcd24e5676298961f05049199871f8a6f7364ee298ce0352c9edb326c4_sk
+    ports:
+      - "7054:7054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ./channel/crypto-config/peerOrganizations/im1.blockchaindev12.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerIM1
+
+  ca.eb1.blockchaindev12.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-eb1
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.eb1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/f9cd6b3e36cf3d08e53fea140474d48927f67872e23eab077025a7916cec295d_sk
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.eb1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/f9cd6b3e36cf3d08e53fea140474d48927f67872e23eab077025a7916cec295d_sk
+    ports:
+      - "8054:7054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ./channel/crypto-config/peerOrganizations/eb1.blockchaindev12.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerEB1
+
+  ca.eb2.blockchaindev12.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-eb2
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.eb2.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b86ad21d59be3f4a43f38d6bd7ba7b87057b04216bd7a07d407957df9a06a114_sk
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.eb2.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b86ad21d59be3f4a43f38d6bd7ba7b87057b04216bd7a07d407957df9a06a114_sk
+    ports:
+      - "9054:7054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ./channel/crypto-config/peerOrganizations/eb2.blockchaindev12.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerEB2
+
+  ca.ab1.blockchaindev12.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-ab1
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.ab1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/5f9094231f29bf085a692106a77152275827f24104f1759c6bebe56541075808_sk
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.ab1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/5f9094231f29bf085a692106a77152275827f24104f1759c6bebe56541075808_sk
+    ports:
+      - "10054:7054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ./channel/crypto-config/peerOrganizations/ab1.blockchaindev12.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerAB1
+
+  ca.ab2.blockchaindev12.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-ab2
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.ab2.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a1b11e35cdc8f110a7ae259f1c55ba5d13f025f0a0d03588260124f8d2bd0c3f_sk
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.ab2.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a1b11e35cdc8f110a7ae259f1c55ba5d13f025f0a0d03588260124f8d2bd0c3f_sk
+    ports:
+      - "11054:7054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ./channel/crypto-config/peerOrganizations/ab2.blockchaindev12.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerAB2
+
+  ca.cb1.blockchaindev12.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-cb1
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.cb1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a34019bce0bf85d36dfeda4d3256f6c26db6aaf07ae96f4a77e5c9f29462ac78_sk
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.cb1.blockchaindev12.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/a34019bce0bf85d36dfeda4d3256f6c26db6aaf07ae96f4a77e5c9f29462ac78_sk
+    ports:
+      - "12054:7054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ./channel/crypto-config/peerOrganizations/cb1.blockchaindev12.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerCB1  
+
+  orderer.blockchaindev12.com:
+    container_name: orderer.blockchaindev12.com
+    image: hyperledger/fabric-orderer
+    environment:
+      - ORDERER_GENERAL_LOGLEVEL=debug
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_GENESISMETHOD=file
+      - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/genesis.block
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/crypto/orderer/msp
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/crypto/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/crypto/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/crypto/orderer/tls/ca.crt, /etc/hyperledger/crypto/peerIM1/tls/ca.crt, /etc/hyperledger/crypto/peerEB1/tls/ca.crt]
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderers
+    command: orderer
+    ports:
+      - 7050:7050
+    volumes:
+        - ./channel:/etc/hyperledger/configtx
+        - ./channel/crypto-config/ordererOrganizations/blockchaindev12.com/orderers/orderer.blockchaindev12.com/:/etc/hyperledger/crypto/orderer
+        - ./channel/crypto-config/peerOrganizations/im1.blockchaindev12.com/peers/peer0.im1.blockchaindev12.com/:/etc/hyperledger/crypto/peerIM1
+        - ./channel/crypto-config/peerOrganizations/eb1.blockchaindev12.com/peers/peer0.eb1.blockchaindev12.com/:/etc/hyperledger/crypto/peerEB1
+
+  peer0.im1.blockchaindev12.com:
+    container_name: peer0.im1.blockchaindev12.com
+    extends:
+      file:   base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.im1.blockchaindev12.com
+      - CORE_PEER_LOCALMSPID=IM1
+      - CORE_PEER_ADDRESS=peer0.im1.blockchaindev12.com:7051
+    ports:
+      - 7051:7051
+      - 7053:7053
+    volumes:
+        - ./channel/crypto-config/peerOrganizations/im1.blockchaindev12.com/peers/peer0.im1.blockchaindev12.com/:/etc/hyperledger/crypto/peer
+    depends_on:
+      - orderer.blockchaindev12.com
+
+
+  peer0.eb1.blockchaindev12.com:
+    container_name: peer0.eb1.blockchaindev12.com
+    extends:
+      file:   base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.eb1.blockchaindev12.com
+      - CORE_PEER_LOCALMSPID=EB1
+      - CORE_PEER_ADDRESS=peer0.eb1.blockchaindev12.com:7051
+    ports:
+      - 8051:7051
+      - 8053:7053
+    volumes:
+        - ./channel/crypto-config/peerOrganizations/eb1.blockchaindev12.com/peers/peer0.eb1.blockchaindev12.com/:/etc/hyperledger/crypto/peer
+    depends_on:
+      - orderer.blockchaindev12.com
+
+  
+
+  peer0.eb2.blockchaindev12.com:
+    container_name: peer0.eb2.blockchaindev12.com
+    extends:
+      file:   base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.eb2.blockchaindev12.com
+      - CORE_PEER_LOCALMSPID=EB2
+      - CORE_PEER_ADDRESS=peer0.eb2.blockchaindev12.com:7051
+    ports:
+      - 9051:7051
+      - 9053:7053
+    volumes:
+        - ./channel/crypto-config/peerOrganizations/eb2.blockchaindev12.com/peers/peer0.eb2.blockchaindev12.com/:/etc/hyperledger/crypto/peer
+    depends_on:
+      - orderer.blockchaindev12.com
+
+ 
+  peer0.ab1.blockchaindev12.com:
+    container_name: peer0.ab1.blockchaindev12.com
+    extends:
+      file:   base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.ab1.blockchaindev12.com
+      - CORE_PEER_LOCALMSPID=AB1
+      - CORE_PEER_ADDRESS=peer0.ab1.blockchaindev12.com:7051
+    ports:
+      - 10051:7051
+      - 10053:7053
+    volumes:
+        - ./channel/crypto-config/peerOrganizations/ab1.blockchaindev12.com/peers/peer0.ab1.blockchaindev12.com/:/etc/hyperledger/crypto/peer
+    depends_on:
+      - orderer.blockchaindev12.com
+
+  
+  peer0.ab2.blockchaindev12.com:
+    container_name: peer0.ab2.blockchaindev12.com
+    extends:
+      file:   base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.ab2.blockchaindev12.com
+      - CORE_PEER_LOCALMSPID=AB2
+      - CORE_PEER_ADDRESS=peer0.ab2.blockchaindev12.com:7051
+    ports:
+      - 11051:7051
+      - 11053:7053
+    volumes:
+        - ./channel/crypto-config/peerOrganizations/ab2.blockchaindev12.com/peers/peer0.ab2.blockchaindev12.com/:/etc/hyperledger/crypto/peer
+    depends_on:
+      - orderer.blockchaindev12.com
+
+
+  peer0.cb1.blockchaindev12.com:
+    container_name: peer0.cb1.blockchaindev12.com
+    extends:
+      file:   base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.cb1.blockchaindev12.com
+      - CORE_PEER_LOCALMSPID=CB1
+      - CORE_PEER_ADDRESS=peer0.cb1.blockchaindev12.com:7051
+    ports:
+      - 12051:7051
+      - 12053:7053
+    volumes:
+        - ./channel/crypto-config/peerOrganizations/cb1.blockchaindev12.com/peers/peer0.cb1.blockchaindev12.com/:/etc/hyperledger/crypto/peer
+    depends_on:
+      - orderer.blockchaindev12.com

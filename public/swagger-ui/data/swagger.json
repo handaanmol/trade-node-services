@@ -1,0 +1,506 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "trade-instruction-services !",
+        "description": "This API provides services for the trade instruction application",
+        "version": "1.0.0",
+        "termsOfService": "",
+        "license": {
+            "name": "click here to get the access  token",
+            "url": "https://login.microsoftonline.com/85c997b9-f494-46b3-a11d-772983cf6f11/oauth2/authorize?response_type=token&client_id=b714e2a4-ed6d-41c7-9825-8ea1005ea4a8&redirect_uri=http://collaboration-platform&state=6b357601-600f-437c-a511-8d7660edfd6c&nux=1&resource=http://collaboration-platform-services&client-request-id=7263321b-8d49-415c-920d-7a525fa37555&x-client-SKU=Js&x-client-Ver=1.0.8&nonce=5fe6955c-87ad-46ce-9725-8ca196e09323"
+        }
+    },
+    "host": "127.0.0.1:4000",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "summary": "Add user to organization",
+                "description": "Add user\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "content",
+                        "schema": {
+                            "$ref": "#/definitions/addUserRequest"
+                        }
+                    }
+                ],
+                "tags": [
+                    "user"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add user",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/channels": {
+            "post": {
+                "summary": "Create a channel",
+                "description": "Create a channel\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "jwt token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "content",
+                        "schema": {
+                            "$ref": "#/definitions/createChannelRequest"
+                        }
+                    }
+                ],
+                "tags": [
+                    "channel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "add channel",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/channels/{channelName}/peers": {
+            "post": {
+                "summary": "Join a channel",
+                "description": "Join a channel\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "jwt token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "channelName",
+                        "in": "path",
+                        "description": "name of the channel to be joined",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "content",
+                        "schema": {
+                            "$ref": "#/definitions/peerRequest"
+                        }
+                    }
+                ],
+                "tags": [
+                    "channel"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "joined a channel",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/chaincodes": {
+            "post": {
+                "summary": "install a chaincode",
+                "description": "Install a chaincode\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "jwt token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "content",
+                        "schema": {
+                            "$ref": "#/definitions/installChaincode"
+                        }
+                    }
+                ],
+                "tags": [
+                    "chaincode"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "joined a channel",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/channels/{channelName}/chaincodes": {
+            "post": {
+                "summary": "Instantiate chaincode ",
+                "description": "Instantiate chaincode\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "jwt token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "channelName",
+                        "in": "path",
+                        "description": "name of the channel to be joined",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "content",
+                        "schema": {
+                            "$ref": "#/definitions/instantiateChaincode"
+                        }
+                    }
+                ],
+                "tags": [
+                    "chaincode"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "joined a channel",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/channels/{channelName}/chaincodes/{chaincodeName}": {
+            "post": {
+                "summary": "Invoke Chaincode",
+                "description": "Install Chaincode\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "jwt token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "channelName",
+                        "in": "path",
+                        "description": "name of the channel which is being used",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "chaincodeName",
+                        "in": "path",
+                        "description": "name of the chaincodeName to be called",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "content",
+                        "in": "body",
+                        "description": "content",
+                        "schema": {
+                            "$ref": "#/definitions/invokeChaincode"
+                        }
+                    }
+                ],
+                "tags": [
+                    "chaincode"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "joined a channel",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Query Chaincode",
+                "description": "Query Chaincode\n",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "jwt token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "channelName",
+                        "in": "path",
+                        "description": "name of the channel which is being used",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "chaincodeName",
+                        "in": "path",
+                        "description": "name of the chaincodeName to be called",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "peer",
+                        "in": "query",
+                        "description": "name of the peer to be queried",
+                        "type": "string"
+                    },
+                    {
+                        "name": "fcn",
+                        "in": "query",
+                        "description": "name of function to be queried",
+                        "type": "string"
+                    },
+                    {
+                        "name": "args",
+                        "in": "query",
+                        "description": "args passed",
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "chaincode"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "joined a channel",
+                        "schema": {
+                            "$ref": "#/definitions/response"
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        },
+        "response": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "status": {
+                    "type": "object"
+                }
+            }
+        },
+        "createChannelRequest": {
+            "type": "object",
+            "properties": {
+                "channelName": {
+                    "type": "string"
+                },
+                "channelConfigPath": {
+                    "type": "string"
+                }
+            }
+        },
+        "addUserRequest":{
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "orgName": {
+                    "type": "string"
+                }
+            }
+        },
+        "peerRequest":{
+            "type": "object",
+            "properties": {
+                "peers": {
+                    "type": "array",
+                    "items": {
+                       "type":"string"
+                    }
+                }
+            }
+        },
+        "installChaincode": {
+            "type": "object",
+            "properties": {
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type":"string"
+                    }
+                },
+                "chaincodeName": {
+                    "type": "string"
+                },
+                "chaincodePath": {
+                    "type": "string"
+                },
+                "chaincodeType": {
+                    "type": "string"
+                },
+                "chaincodeVersion": {
+                    "type": "string"
+                }
+            }
+        },
+        "instantiateChaincode": {
+            "type": "object",
+            "properties": {
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type":"string"
+                    }
+                },
+                "chaincodeName": {
+                    "type": "string"
+                },
+                "chaincodeVersion": {
+                    "type": "string"
+                },
+                "chaincodeType": {
+                    "type": "string"
+                },
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "type":"string"
+                    }
+                }
+            }
+        },
+        "invokeChaincode": {
+            "type": "object",
+            "properties": {
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type":"string"
+                    }
+                },
+                "fcn": {
+                    "type": "string"
+                },
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+}

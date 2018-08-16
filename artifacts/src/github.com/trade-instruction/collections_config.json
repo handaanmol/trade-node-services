@@ -1,0 +1,224 @@
+[
+{
+	"name": "collectionAllocationForEB1IM1AB1",
+	"policy": {
+    "identities": [{
+        "role": {
+          "name": "peer",
+          "mspId": "IM1"
+        }
+      },
+      {
+        "role": {
+          "name": "peer",
+          "mspId": "EB1"
+        }
+      },
+      {
+        "role": {
+          "name": "peer",
+          "mspId": "AB1"
+        }
+      }
+    ],
+    "policy": {
+      "1-of": [
+        {
+          "signed-by": 0
+        },
+        {
+          "signed-by": 1
+        }
+      ]
+    }
+  },
+	"requiredPeerCount": 0,
+	"maxPeerCount": 3,
+	"blockToLive":0
+},
+ {
+  "name": "collectionAllocationForEB2IM1AB1",
+  "policy": {
+    "identities": [{
+        "role": {
+          "name": "peer",
+          "mspId": "IM1"
+        }
+      },
+      {
+        "role": {
+          "name": "peer",
+          "mspId": "EB2"
+        }
+      },
+      {
+        "role": {
+          "name": "peer",
+          "mspId": "AB1"
+        }
+      }
+    ],
+    "policy": {
+      "1-of": [
+        {
+          "signed-by": 0
+        },
+        {
+          "signed-by": 1
+        }
+      ]
+    }
+  },
+	"requiredPeerCount": 0,
+	"maxPeerCount": 3,
+	"blockToLive":0
+ },
+ {
+  "name": "collectionAllocationForEB2IM1AB2",
+  "policy": {
+    "identities": [{
+        "role": {
+          "name": "peer",
+          "mspId": "IM1"
+        }
+      },
+      {
+        "role": {
+          "name": "peer",
+          "mspId": "EB2"
+        }
+      },
+      {
+        "role": {
+          "name": "peer",
+          "mspId": "AB2"
+        }
+      }
+    ],
+    "policy": {
+      "1-of": [
+        {
+          "signed-by": 0
+        },
+        {
+          "signed-by": 1
+        }
+      ]
+    }
+  },
+	"requiredPeerCount": 0,
+	"maxPeerCount": 3,
+	"blockToLive":0
+ },
+ {
+    "name": "collectionBrokerSSIForEB1IM1AB1",
+    "policy": {
+      "identities": [{
+          "role": {
+            "name": "peer",
+            "mspId": "IM1"
+          }
+        },
+        {
+          "role": {
+            "name": "peer",
+            "mspId": "EB1"
+          }
+        },
+        {
+          "role": {
+            "name": "peer",
+            "mspId": "AB1"
+          }
+        }
+      ],
+      "policy": {
+        "1-of": [
+          {
+            "signed-by": 0
+          },
+          {
+            "signed-by": 1
+          }
+        ]
+      }
+    },
+    "requiredPeerCount": 0,
+    "maxPeerCount": 3,
+    "blockToLive":0
+  },
+  {
+    "name": "collectionBrokerSSIForEB2IM1AB1",
+    "policy": {
+      "identities": [{
+          "role": {
+            "name": "peer",
+            "mspId": "IM1"
+          }
+        },
+        {
+          "role": {
+            "name": "peer",
+            "mspId": "EB2"
+          }
+        },
+        {
+          "role": {
+            "name": "peer",
+            "mspId": "AB1"
+          }
+        }
+      ],
+      "policy": {
+        "1-of": [
+          {
+            "signed-by": 0
+          },
+          {
+            "signed-by": 1
+          }
+        ]
+      }
+    },
+    "requiredPeerCount": 0,
+    "maxPeerCount": 3,
+    "blockToLive":0
+  },
+  {
+    "name": "collectionBrokerSSIForEB1IM1AB2",
+    "policy": {
+      "identities": [{
+          "role": {
+            "name": "peer",
+            "mspId": "IM1"
+          }
+        },
+        {
+          "role": {
+            "name": "peer",
+            "mspId": "EB1"
+          }
+        },
+        {
+          "role": {
+            "name": "peer",
+            "mspId": "AB2"
+          }
+        }
+      ],
+      "policy": {
+        "1-of": [
+          {
+            "signed-by": 0
+          },
+          {
+            "signed-by": 1
+          }
+        ]
+      }
+    },
+    "requiredPeerCount": 0,
+    "maxPeerCount": 3,
+    "blockToLive":0
+  }
+]
