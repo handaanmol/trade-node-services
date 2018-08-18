@@ -42,7 +42,7 @@ var instantiateChaincode = async function(peers, channelName, chaincodeName, cha
 		                                       // be used to sign the proposal request.
 		// will need the transaction ID string for the event registration later
 		var deployId = tx_id.getTransactionID();
-		const collectionsConfigPath = path.resolve(__dirname, '../artifacts/src/github.com/trade-instruction/collections_config.json');
+		const collectionsConfigPath = path.resolve(__dirname, '../artifacts/src/github.com/colorado/collections_config.json');
 		// send proposal to endorser
 		var request = {
 			targets : peers,
